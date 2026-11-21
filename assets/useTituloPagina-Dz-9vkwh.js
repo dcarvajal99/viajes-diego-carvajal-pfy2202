@@ -1,0 +1,1 @@
+import{at as e,ot as t}from"./index-BT_EWQ9T.js";var n=t(e(),1);function r(e){(0,n.useEffect)(()=>{document.title=e+` | Rumbo Austral`},[e])}export{r as t};
