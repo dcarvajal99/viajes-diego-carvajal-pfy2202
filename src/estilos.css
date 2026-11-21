@@ -1,0 +1,58 @@
+/* Rumbo Austral · Diego Carvajal · PFY2202 Semana 5
+   Tailwind CSS: los estilos se escriben con clases en cada componente. Aquí solo van la
+   paleta del sitio y las reglas base que valen para todos los elementos. */
+@import "tailwindcss";
+
+/* --color-*: initial borra la paleta de Tailwind: solo existen estas clases de color
+   (bg-tinta, text-suave, border-borde...), cinco neutros, un acento y un rojo de alerta. */
+@theme {
+    --color-*: initial;
+    --color-blanco: #ffffff;
+    --color-lienzo: #f7f7f8;
+    --color-borde: #e4e4e7;
+    --color-suave: #52525b;
+    --color-tinta: #18181b;
+    --color-acento: #0f5b52;
+    --color-alerta: #b02a37;
+
+    --font-sans: 'Inter Variable', 'Inter Respaldo', system-ui, sans-serif;
+}
+
+/* La fuente Inter se sirve desde el mismo sitio (@fontsource-variable/inter, importada en
+   main.jsx), sin hojas externas que retrasen el primer dibujo. Mientras llega, el texto usa
+   Arial ajustada a las medidas de Inter: ocupa casi el mismo espacio y la página no se mueve
+   al cambiar de fuente. */
+@font-face {
+    font-family: 'Inter Respaldo';
+    src: local('Arial');
+    ascent-override: 90.44%;
+    descent-override: 22.52%;
+    line-gap-override: 0%;
+    size-adjust: 107.12%;
+}
+
+@layer base {
+    /* El espacio de la barra de desplazamiento queda reservado: si una página es más corta
+       que la ventana y la barra desaparece, el sitio no se corre hacia el lado */
+    html {
+        scrollbar-gutter: stable;
+    }
+
+    /* Tailwind deja los bordes del color del texto; aquí parten con el gris del sitio */
+    *,
+    ::before,
+    ::after {
+        border-color: var(--color-borde);
+    }
+
+    /* Foco visible para el teclado, igual en todo el sitio */
+    :focus-visible {
+        outline: 2px solid var(--color-acento);
+        outline-offset: 2px;
+    }
+
+    /* El contenido recibe el foco por código al cambiar de página: sin contorno visible */
+    [tabindex="-1"]:focus {
+        outline: none;
+    }
+}
